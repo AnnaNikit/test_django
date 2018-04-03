@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new group</title>
+    <style>
+        .p {
+            display: block;
+            margin-bottom: 10px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+<h1>
+    Add new student
+</h1>
+<form method="POST" action="http://localhost:8000/students/add">
+      {% csrf_token %}
+      <label class="p">
+          Name:<input value="Student1" name="name" required>
+      </label>
+      <label class="p">
+          Surname: <input value="Surname1" name="surname" required>
+      </label>
+      <label class="p">
+        Group: <select name="group">
+          <option selected="selected" disabled></option>
+            {% for group in groups %}
+              <option value="{{group.id}}">{{ group.name }}</option>
+            {% endfor %}
+          </select>
+        </label>
+      <input type="submit" value="OK">
+      <input type="reset" value="Reset">
+</form>
+
+<h1>
+    Add new certificate
+</h1>
+<form method="POST" action="http://localhost:8000/students/add">
+      {% csrf_token %}
+      <label class="p">
+        Student: <select name="student">
+          <option selected="selected" disabled></option>
+            {% for student in students %}
+              <option value="{{student.id}}">{{ student.name }}</option>
+            {% endfor %}
+          </select>
+      </label>
+      <label class="p">
+          subject: <input name="subject" required>
+      </label>
+      <label class="p">
+          grade: <input name="grade" required>
+      </label>
+      <label class="p">
+          date: <input type="date" name="date" required>
+      </label>
+      <input type="submit" value="OK">
+      <input type="reset" value="Reset">
+</form>
+
+<h1>
+    find student
+</h1>
+<form method="POST" action="http://localhost:8000/students/add">
+      {% csrf_token %}
+      <label class="p">
+          name: <input name="namefind" required>
+      </label>
+      <input type="submit" value="find">
+      {% for student in studentsFind %}
+              <p>Name: {{ student.name }}</p>
+              <p>Start Date: {{ student.surname }}</p>
+              <p>Max Student: {{ student.group.name }}</p>
+              <br/>
+      {% endfor %}
+
+</form>
+
+</body>
+</html>

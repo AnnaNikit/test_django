@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>All groups</title>
+</head>
+<body>
+
+{% csrf_token %}
+{% for student in students %}
+        <p>Name: {{ student.name }}</p>
+        <p>Start Date: {{ student.surname }}</p>
+        <p>Max Student: {{ student.group.name }}</p>
+        <br/>
+{% endfor %}
+</body>
+</html>
