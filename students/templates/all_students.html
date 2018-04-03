@@ -8,10 +8,42 @@
 
 {% csrf_token %}
 {% for student in students %}
-        <p>Name: {{ student.name }}</p>
-        <p>Start Date: {{ student.surname }}</p>
-        <p>Max Student: {{ student.group.name }}</p>
-        <br/>
+    <p>Name: {{ student.name }}</p>
+    <p>Start Date: {{ student.surname }}</p>
+    <p>Max Student: {{ student.group.name }}</p>
+    <input
+            type="button"
+            id="add-certificate"
+            onclick="showAddCertificateForm({{ student.id }})"
+            value="Add certificate"
+    />
+    <form
+            id="add-certificate-{{ student.id }}"
+            method="post"
+            action="/students/{{ student.id }}/certificate/add"
+            style="display: none;"
+    >
+        {% csrf_token %}
+        <p>
+            <label>
+                Grade:
+                <input type="number" value="2" max="10" name="grade">
+            </label>
+            <label>
+                Subject:
+                <input type="text" name="subject">
+            </label>
+            <input type="submit" value="Add certificate">
+            <input type="reset" value="Reset">
+        </p>
+    </form>
+    <br/>
 {% endfor %}
 </body>
+<script>
+    function showAddCertificateForm(studentId) {
+        alert("Click on add-certificate-" + studentId)
+        document.getElementById("add-certificate-" + studentId).style.display = 'inline'
+    }
+</script>
 </html>
