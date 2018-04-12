@@ -3,13 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Add new group</title>
-    <style>
-        .p {
-            display: block;
-            margin-bottom: 10px;
-            margin-top: 15px;
-        }
-    </style>
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -18,22 +12,53 @@
 </head>
 <body>
 
-<h1>
+  <h5 >
+  <div class="col-md-5" >
     Add new group
-</h1>
+    </div>
+  </h5>
+
 <form method="POST" action="http://localhost:8000/groups/add">
       {% csrf_token %}
-      <label class="p">
-          Name:<input value="Group 1" name="name" required>
-      </label>
-      <label class="p">
-          Start date: <input type="date" name="startDate" value="2014-02-09" required>
-      </label>
-      <label class="p">
-          Max student: <input type="number" name="maxStudents" value="10" required>
-      </label>
+      <div class="col-md-8" >
+
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">
+          Name </label>
+          <div > <input value="Group 1" name="name" class="form-control" required> </div>
+        </div>
+        </div>
+        <div class="col-md-8" >
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">
+
+          Start date </label>
+          <div > <input type="date" name="startDate" value="2014-02-09" class="form-control" required></div>
+
+        </div>
+        </div>
+        <div class="col-md-8" >
+
+        <div class="form-group row">
+      <label class="col-sm-2 col-form-label">
+          Max student  </label> <div >  <input type="number" name="maxStudents" class="form-control" value="10" required>
+          </div>
+          </div>
+
+          </div>
+
+          <div class="col-md-8" >
+
+            <div class="form-group row">
+            <label class="col-sm-2 col-form-label">
+
       <input type="submit" value="OK" class="btn btn-dark">
-      <input type="reset" value="Reset" class="btn btn-secondary">
+      <input type="reset" value="Reset" class="btn btn-secondary"></label>
+    </div>
+
+    </div>
+
 </form>
 </body>
 </html>

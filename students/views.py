@@ -5,6 +5,7 @@ from groups.models import Group
 from students.models import Student, Certificate
 from django.db.models.query import QuerySet
 from django.db.models import Avg
+from django.contrib.auth.decorators import login_required
 
 
 

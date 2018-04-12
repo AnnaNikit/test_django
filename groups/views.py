@@ -2,7 +2,9 @@ from django.shortcuts import render,  redirect
 from django.http import HttpResponse, HttpRequest
 from django.views import View
 from groups.models import Group
+from django.contrib.auth.decorators import login_required
 
+from django.utils.decorators import method_decorator
 
 def all_groups(request):
     print(Group.objects.all())
@@ -29,6 +31,8 @@ def add_group(request):
     return redirect('/groups/all')
 
 # class-based view
+
+#@method_decorator(login_required(login_url='/authorizat/login'), name='dispatch')
 class AddGroupView(View):
     def get(self, request):
         return HttpResponse(render(request, 'add-group.html'))
